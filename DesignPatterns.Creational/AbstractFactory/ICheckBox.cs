@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns.Creational.AbstractFactory
 {
-    public interface IAbstractFactory
+    public interface ICheckBox
     {
-        IButton CreateButton();
-        ICheckBox CreateCheckBox();
+        string CheckBoxFunction();
+
+        string CheckBoxWithButton(IButton collaborator);
     }
 }

@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns.Creational.AbstractFactory
 {
-    public interface IAbstractFactory
+    public class LinuxButton : IButton
     {
-        IButton CreateButton();
-        ICheckBox CreateCheckBox();
+        public string ButtonFunction()
+        {
+            return "This is Linux Button";
+        }
     }
 }

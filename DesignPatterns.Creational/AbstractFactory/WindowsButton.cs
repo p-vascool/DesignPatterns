@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns.Creational.AbstractFactory
 {
-    public interface IAbstractFactory
+    public class WindowsButton : IButton
     {
-        IButton CreateButton();
-        ICheckBox CreateCheckBox();
+        public string ButtonFunction()
+        {
+            return "This is Windows Button.";
+        }
     }
 }
