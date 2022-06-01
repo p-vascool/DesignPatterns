@@ -1,6 +1,7 @@
 ﻿using DesignPatterns.Creational.AbstractFactory;
 using DesignPatterns.Creational.Builder;
 using DesignPatterns.Creational.FactoryMethod;
+using DesignPatterns.Creational.Prototype;
 
 
 #region FactoryMethod
@@ -37,6 +38,25 @@ Console.WriteLine();
 director.BuildMaxVaiableProduct();
 
 Console.WriteLine(builder.GetProduct().ListParts());
+
+#endregion
+
+#region Prototype
+var person = new Person();
+person.Name = "Vasko";
+person.IdInfo = new IdInfo(123);
+person.Age = 23;
+person.BirthDate = new DateTime(1999,02,01);
+
+var person2 = person.DeepCooy();
+person2.Name = "Ivan";
+person2.Age = 13;
+person2.IdInfo = new IdInfo(321);
+person2.BirthDate = new DateTime(2009, 01, 01);
+Console.WriteLine();
+Console.WriteLine(person.ToString());
+Console.WriteLine();
+Console.WriteLine(person2.ToString());
 
 #endregion
 
