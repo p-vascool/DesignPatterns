@@ -2,6 +2,7 @@
 using DesignPatterns.Creational.Builder;
 using DesignPatterns.Creational.FactoryMethod;
 using DesignPatterns.Creational.Prototype;
+using DesignPatterns.Creational.Singleton;
 
 
 #region FactoryMethod
@@ -58,6 +59,22 @@ Console.WriteLine(person.ToString());
 Console.WriteLine();
 Console.WriteLine(person2.ToString());
 
+#endregion
+
+#region Singleton
+var firstInst = Singleton.GetInstance();
+var secondInst = Singleton.GetInstance();
+firstInst.InstanceName = "Vasko";
+Console.WriteLine();
+Console.WriteLine(firstInst.InstanceName);
+Console.WriteLine();
+Console.WriteLine(secondInst.InstanceName);
+Console.WriteLine();
+
+secondInst.InstanceName = "Veche ne e Vasko";
+Console.WriteLine(firstInst.InstanceName);
+Console.WriteLine();
+Console.WriteLine(secondInst.InstanceName);
 #endregion
 
 void ClientCode(Logisticts creator)
