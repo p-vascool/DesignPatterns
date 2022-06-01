@@ -1,4 +1,5 @@
 ﻿using DesignPatterns.Creational.AbstractFactory;
+using DesignPatterns.Creational.Builder;
 using DesignPatterns.Creational.FactoryMethod;
 
 
@@ -18,6 +19,25 @@ Console.WriteLine();
 Console.WriteLine();
 var client = new Client();
 client.Main();
+#endregion
+
+#region Builder
+
+var builder = new ConcreteBuilder();
+var director = new Director();
+
+director.Builder = builder;
+Console.WriteLine();
+Console.WriteLine();
+director.BuildMinimalVaiableProduct();
+
+Console.WriteLine(builder.GetProduct().ListParts());
+Console.WriteLine();
+
+director.BuildMaxVaiableProduct();
+
+Console.WriteLine(builder.GetProduct().ListParts());
+
 #endregion
 
 void ClientCode(Logisticts creator)
