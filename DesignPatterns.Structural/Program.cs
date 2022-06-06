@@ -4,6 +4,7 @@ using DesignPatterns.Structural.Adapter;
 using DesignPatterns.Structural.Bridge;
 using DesignPatterns.Structural.Composition;
 using DesignPatterns.Structural.Decorator;
+using DesignPatterns.Structural.Facade;
 
 Adaptee adaptee = new Adaptee();
 ITarget target = new Adapter(adaptee);
@@ -66,4 +67,13 @@ SmsDecorator decorator2 = new SmsDecorator(decorator1);
 SlackDecorator decorator = new SlackDecorator(decorator2);
 Console.WriteLine("Client: Now I've got a decorated component:");
 clientNode.ClientCode(decorator);
+#endregion
+
+#region Facade
+
+Subsystem1 subsystem1 = new Subsystem1();
+Subsystem2 subsystem2 = new Subsystem2();
+Facade facade = new Facade(subsystem1, subsystem2);
+FacadeClient.ClientCode(facade);
+
 #endregion
