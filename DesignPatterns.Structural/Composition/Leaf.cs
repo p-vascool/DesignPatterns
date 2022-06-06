@@ -13,6 +13,6 @@ namespace DesignPatterns.Structural.Composition
             return "Leaf";
         }
 
-        public override bool IsComposite() => false
+        public override bool IsComposite() => false;
     }
 }

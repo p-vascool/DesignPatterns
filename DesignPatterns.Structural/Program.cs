@@ -3,6 +3,7 @@
 using DesignPatterns.Structural.Adapter;
 using DesignPatterns.Structural.Bridge;
 using DesignPatterns.Structural.Composition;
+using DesignPatterns.Structural.Decorator;
 
 Adaptee adaptee = new Adaptee();
 ITarget target = new Adapter(adaptee);
@@ -45,4 +46,24 @@ cl.ClientCode(tree);
 
 Console.Write("Client: I don't need to check the components classes even when managing the tree:\n");
 cl.ClientCode2(tree, leaf);
+#endregion
+
+#region Decorator
+
+ClientNode clientNode = new ClientNode();
+
+var comcreteCompo = new ConcreteComponent();
+Console.WriteLine("Client: I get a simple component:");
+clientNode.ClientCode(comcreteCompo);
+Console.WriteLine();
+
+// ...as well as decorated ones.
+//
+// Note how decorators can wrap not only simple components but the
+// other decorators as well.
+FacebookDecorator decorator1 = new FacebookDecorator(comcreteCompo);
+SmsDecorator decorator2 = new SmsDecorator(decorator1);
+SlackDecorator decorator = new SlackDecorator(decorator2);
+Console.WriteLine("Client: Now I've got a decorated component:");
+clientNode.ClientCode(decorator);
 #endregion
