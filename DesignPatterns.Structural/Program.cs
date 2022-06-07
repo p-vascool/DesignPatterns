@@ -5,6 +5,7 @@ using DesignPatterns.Structural.Bridge;
 using DesignPatterns.Structural.Composition;
 using DesignPatterns.Structural.Decorator;
 using DesignPatterns.Structural.Facade;
+using DesignPatterns.Structural.Flyweight;
 
 Adaptee adaptee = new Adaptee();
 ITarget target = new Adapter(adaptee);
@@ -76,4 +77,53 @@ Subsystem2 subsystem2 = new Subsystem2();
 Facade facade = new Facade(subsystem1, subsystem2);
 FacadeClient.ClientCode(facade);
 
+#endregion
+
+#region Flyweight
+
+var factory = new FlyweightFactory(
+               new Car { Company = "Chevrolet", Model = "Camaro2018", Color = "pink" },
+               new Car { Company = "Mercedes Benz", Model = "C300", Color = "black" },
+               new Car { Company = "Mercedes Benz", Model = "C500", Color = "red" },
+               new Car { Company = "BMW", Model = "M5", Color = "red" },
+               new Car { Company = "BMW", Model = "X6", Color = "white" }
+           );
+factory.ListFlyweights();
+
+addCarToPoliceDatabase(factory, new Car
+{
+    Number = "CL234IR",
+    Owner = "James Doe",
+    Company = "BMW",
+    Model = "M5",
+    Color = "red"
+});
+
+addCarToPoliceDatabase(factory, new Car
+{
+    Number = "CL234IR",
+    Owner = "James Doe",
+    Company = "BMW",
+    Model = "X1",
+    Color = "red"
+});
+
+factory.ListFlyweights();
+
+
+static void addCarToPoliceDatabase(FlyweightFactory factory, Car car)
+{
+    Console.WriteLine("\nClient: Adding a car to database.");
+
+    var flyweight = factory.GetFlyweight(new Car
+    {
+        Color = car.Color,
+        Model = car.Model,
+        Company = car.Company
+    });
+
+    // The client code either stores or calculates extrinsic state and
+    // passes it to the flyweight's methods.
+    flyweight.Operation(car);
+}
 #endregion
