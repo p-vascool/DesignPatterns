@@ -6,6 +6,7 @@ using DesignPatterns.Structural.Composition;
 using DesignPatterns.Structural.Decorator;
 using DesignPatterns.Structural.Facade;
 using DesignPatterns.Structural.Flyweight;
+using DesignPatterns.Structural.Proxy;
 
 Adaptee adaptee = new Adaptee();
 ITarget target = new Adapter(adaptee);
@@ -126,4 +127,18 @@ static void addCarToPoliceDatabase(FlyweightFactory factory, Car car)
     // passes it to the flyweight's methods.
     flyweight.Operation(car);
 }
+#endregion
+
+#region Proxy
+ProxyClient proxyClient = new ProxyClient();
+
+Console.WriteLine("Client: Executing the client code with a real subject:");
+RealSubject realSubject = new RealSubject();
+proxyClient.ClientCode(realSubject);
+
+Console.WriteLine();
+
+Console.WriteLine("Client: Executing the same client code with a proxy:");
+Proxy proxy = new Proxy(realSubject);
+proxyClient.ClientCode(proxy);
 #endregion
