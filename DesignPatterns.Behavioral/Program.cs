@@ -3,6 +3,7 @@ using DesignPatterns.Behavioral.Command;
 using DesignPatterns.Behavioral.Iterator;
 using DesignPatterns.Behavioral.Mediator;
 using DesignPatterns.Behavioral.Memento;
+using DesignPatterns.Behavioral.Observer;
 
 #region ChainOfResposibility
 
@@ -100,5 +101,27 @@ careTaker.Undo();
 
 Console.WriteLine("\nOnce more!\n");
 careTaker.Undo();
+
+#endregion
+
+#region Observer
+
+Console.WriteLine();
+Console.WriteLine();
+
+var subject = new Subject();
+var observerA = new ConcreteObserverA();
+subject.Attach(observerA);
+
+var observerB = new ConcreteObserverB();
+subject.Attach(observerB);
+
+subject.ChangeSubjectState();
+subject.ChangeSubjectState();
+subject.ChangeSubjectState();
+
+subject.Detach(observerB);
+subject.ChangeSubjectState();
+
 
 #endregion
