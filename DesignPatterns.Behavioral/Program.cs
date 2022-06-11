@@ -7,6 +7,7 @@ using DesignPatterns.Behavioral.Observer;
 using DesignPatterns.Behavioral.State;
 using DesignPatterns.Behavioral.Strategy;
 using DesignPatterns.Behavioral.TemplateMethod;
+using DesignPatterns.Behavioral.Visitor;
 
 #region ChainOfResposibility
 
@@ -161,4 +162,24 @@ Console.Write("\n");
 
 Console.WriteLine("Same client code can work with different subclasses:");
 ConcreteClient.ClientCode(new ConcreteClassB());
+#endregion
+
+#region Visitor
+
+List<IComponent> components = new List<IComponent>
+            {
+                new ConcreteComponentA(),
+                new ConcreteComponentB()
+            };
+
+Console.WriteLine("The client code works with all visitors via the base Visitor interface:");
+var visitor1 = new ConcreteVisitorA();
+VisitorClient.ClientCode(components, visitor1);
+
+Console.WriteLine();
+
+Console.WriteLine("It allows the same client code to work with different types of visitors:");
+var visitor2 = new ConcreteVisitorB();
+VisitorClient.ClientCode(components, visitor2);
+
 #endregion
