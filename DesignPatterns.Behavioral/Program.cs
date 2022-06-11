@@ -6,6 +6,7 @@ using DesignPatterns.Behavioral.Memento;
 using DesignPatterns.Behavioral.Observer;
 using DesignPatterns.Behavioral.State;
 using DesignPatterns.Behavioral.Strategy;
+using DesignPatterns.Behavioral.TemplateMethod;
 
 #region ChainOfResposibility
 
@@ -149,4 +150,15 @@ Console.WriteLine("Client: Strategy is set to reverse sorting.");
 strategyContext.SetStrategy(new ConcreteStrategy());
 strategyContext.DoSomeWork();
 
+#endregion
+
+#region TemplateMethod
+Console.WriteLine("Same client code can work with different subclasses:");
+
+ConcreteClient.ClientCode(new ConcreteClassA());
+
+Console.Write("\n");
+
+Console.WriteLine("Same client code can work with different subclasses:");
+ConcreteClient.ClientCode(new ConcreteClassB());
 #endregion
