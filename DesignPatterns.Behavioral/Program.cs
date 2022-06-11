@@ -4,6 +4,8 @@ using DesignPatterns.Behavioral.Iterator;
 using DesignPatterns.Behavioral.Mediator;
 using DesignPatterns.Behavioral.Memento;
 using DesignPatterns.Behavioral.Observer;
+using DesignPatterns.Behavioral.State;
+using DesignPatterns.Behavioral.Strategy;
 
 #region ChainOfResposibility
 
@@ -123,5 +125,28 @@ subject.ChangeSubjectState();
 subject.Detach(observerB);
 subject.ChangeSubjectState();
 
+#endregion
+
+#region State
+
+var context = new DesignPatterns.Behavioral.State.Context(new ConcreteStateA());
+context.FirstRequest();
+context.SecondRequest();
+
+#endregion
+
+#region Strategy
+
+var strategyContext = new DesignPatterns.Behavioral.Strategy.Context();
+
+Console.WriteLine("Client: Strategy is set to normal sorting.");
+strategyContext.SetStrategy(new ConcreteStrategyA());
+strategyContext.DoSomeWork();
+
+Console.WriteLine();
+
+Console.WriteLine("Client: Strategy is set to reverse sorting.");
+strategyContext.SetStrategy(new ConcreteStrategy());
+strategyContext.DoSomeWork();
 
 #endregion
